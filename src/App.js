@@ -12,7 +12,6 @@ function App() {
     console.log(activeDistrict);
     const data = await pingCowin({ districtId: activeDistrict });
     setCenterInfo(data);
-    console.log("yoyo ", JSON.stringify(data, null, 2));
   };
 
   return (
@@ -43,10 +42,10 @@ function App() {
           Search centers for tomorrow
         </button>
         <span className="text-3xl">
-          {centerInfo.centers.length}
+          {centerInfo?.centers?.length}
         </span>
         <div className="p-8 flex flex-col gap-4 w-full overflow-scroll">
-          {centerInfo.centers.map((center) => {
+          {centerInfo?.centers.map((center) => {
             return (
               <div className="w-full flex justify-between p-2 rounded-lg shadow-inner bg-white">
                 <span className="text-lg">{center.name}</span>
