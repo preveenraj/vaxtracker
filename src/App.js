@@ -6,21 +6,21 @@ import districtConstants from "./constants/districts";
 
 const ageList = [
   {
-    label: "age less than 45",
-    value: -1,
+    label: "👨 < 45",
+    value: 20,
   },
   {
-    label: "age greater than 45",
-    value: 1,
+    label: "👨 > 45",
+    value: 50,
   }
 ]
 function App() {
   const [centerInfo, setCenterInfo] = useState(null);
   const [activeDistrict, setActiveDistrict] = useState(null);
+  const [activeAgeCategory, setActiveAgeCategory] = useState(ageList[1]);
 
   const searchCenters = async () => {
-    const data = await pingCowin({ districtId: activeDistrict });
-    console.log("🚀 ~ file: App.js ~ line 23 ~ searchCenters ~ data", data)
+    const data = await pingCowin({ districtId: activeDistrict, ageValue: activeAgeCategory?.value });
     setCenterInfo(data);
   };
 
@@ -34,7 +34,7 @@ function App() {
           isSearchable={true}
           placeholder={"Select District"}
           error={false}
-          className="w-full"
+          className="w-8/12"
           name="districtList"
           theme={(theme) => ({
             ...theme,
@@ -47,13 +47,12 @@ function App() {
           options={districtConstants["kerala"]}
           onChange={(selected) => setActiveDistrict(selected?.value || null)}
         />
-       {/* <Select
+       <Select
           isLoading={false}
-          isClearable={true}
-          isSearchable={true}
           placeholder={"Select Age Category"}
           error={false}
-          className="w-4/12"
+          defaultValue={activeAgeCategory}
+          className="w-4/12 text-bold"
           name="ageList"
           theme={(theme) => ({
             ...theme,
@@ -64,8 +63,8 @@ function App() {
             },
           })}
           options={ageList}
-          onChange={(selected) => setActiveDistrict(selected?.value || null)}
-        /> */}
+          onChange={(selected) => setActiveAgeCategory(selected || null)}
+        />
        </div>
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -73,8 +72,8 @@ function App() {
         >
           Search centers for tomorrow
         </button>
-        <span className="text-3xl">
-          {centerInfo?.centers?.length}
+        <span className="text-xl rounded-lg border-2 text-gray-300 p-2">
+          Appoinments available: {centerInfo?.appointmentsAvailableCount || 0}
         </span>
      {!!centerInfo?.centers.length &&    
      <div className="p-8 flex flex-col gap-4 w-full overflow-scroll">
