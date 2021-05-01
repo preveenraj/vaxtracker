@@ -1,8 +1,12 @@
 import { useState } from "react";
 import Select from "react-select";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 import { pingCowin } from "./cowin";
 import districtConstants from "./constants/districts";
+import { getTomorrowsDate } from "./dateutils";
 
 const ageList = [
   {
@@ -18,10 +22,17 @@ function App() {
   const [centerInfo, setCenterInfo] = useState(null);
   const [activeDistrict, setActiveDistrict] = useState(null);
   const [activeAgeCategory, setActiveAgeCategory] = useState(ageList[1]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [activeDate, setActiveDate] = useState(getTomorrowsDate());
 
   const searchCenters = async () => {
-    const data = await pingCowin({ districtId: activeDistrict, ageValue: activeAgeCategory?.value });
-    setCenterInfo(data);
+    if(activeDistrict) {
+      setIsLoading(true);
+      const data = await pingCowin({ districtId: activeDistrict, ageValue: activeAgeCategory?.value,  date: activeDate });
+      setCenterInfo(data);
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -29,7 +40,7 @@ function App() {
       <div className="h-full w-full flex flex-col gap-2 items-center md:w-1/2 p-2 rounded-lg border-2 border-gray-300 bg-gray-100 shadow-inner">
        <div className="flex w-full gap-2">
        <Select
-          isLoading={false}
+          isLoading={isLoading}
           isClearable={true}
           isSearchable={true}
           placeholder={"Select District"}
@@ -66,15 +77,20 @@ function App() {
           onChange={(selected) => setActiveAgeCategory(selected || null)}
         />
        </div>
+       <DatePicker 
+       dateFormat="MMMM d, yyyy"
+       className="w-full shadow-inner border-2 border-blue-300 p-2 rounded-lg text-center"
+       selected={activeDate} onChange={date => setActiveDate(date)} />
+ 
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={searchCenters}
         >
           Search centers for tomorrow
         </button>
-        <span className="text-xl rounded-lg border-2 text-gray-300 p-2">
+       {centerInfo &&  <span className="text-xl rounded-lg border-2 text-gray-300 p-2">
           Appoinments available: {centerInfo?.appointmentsAvailableCount || 0}
-        </span>
+        </span>}
      {!!centerInfo?.centers.length &&    
      <div className="p-8 flex flex-col gap-4 w-full overflow-scroll">
           {centerInfo?.centers.map((center, index) => {
