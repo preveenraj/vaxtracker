@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Select from "react-select";
 import DatePicker from "react-datepicker";
-
+import classnames from "classnames";
 import "react-datepicker/dist/react-datepicker.css";
+
+import MultiToggle from "react-multi-toggle";
 
 import { pingCowin } from "./cowin";
 import districtConstants from "./constants/districts";
@@ -19,29 +21,13 @@ const ageList = [
   },
 ];
 
-const SelectStateButton = ({ value, label, activeState, setActiveState, setActiveDistrict }) => {
-  return (
-    <button
-      className={
-        activeState === value ? "text-blue " : "" + " cursor-pointer "
-      }
-      onClick={() => {
-        setActiveState(value);
-        setActiveDistrict(null);
-      }}
-    >
-      {label}
-    </button>
-  );
-};
-
-function App() {
+const App = () => {
   const [centerInfo, setCenterInfo] = useState(null);
   const [activeDistrict, setActiveDistrict] = useState(null);
   const [activeState, setActiveState] = useState("kerala");
   const [activeAgeCategory, setActiveAgeCategory] = useState(ageList[1]);
   const [isLoading, setIsLoading] = useState(false);
-
+  
   const [activeDate, setActiveDate] = useState(getTomorrowsDate());
 
   const searchCenters = async () => {
@@ -58,67 +44,34 @@ function App() {
   };
 
   return (
-    <div className="h-screen py-10 px-4 md:px-10 flex justify-center items-center bg-gray-700">
-      <div className="absolute top-2 flex gap-2">
-        <button
-          className={
-            activeState === "kerala"
-              ? "text-white "
-              : "" + " cursor-pointer "
-          }
-          onClick={() => {
-            setActiveState("kerala");
-            setActiveDistrict(null);
-          }}
-        >
-          Kerala
-        </button>
-        {/* <SelectStateButton
-        value={"kerala"}
-        label={"Kerala"}
-        activeState={activeState}
-        setActiveDate={setActiveState}
-        setActiveDistrict={setActiveDistrict}
-        /> */}
-        <button
-          className={
-            activeState === "tamilnadu"
-              ? "text-white "
-              : "" + " cursor-pointer "
-          }
-          onClick={() => {
-            setActiveState("tamilnadu");
-            setActiveDistrict(null);
-          }}
-        >
-          TamilNadu
-        </button>
-        <button
-          className={
-            activeState === "karnataka"
-              ? "text-white "
-              : "" + " cursor-pointer "
-          }
-          onClick={() => {
-            setActiveState("karnataka");
-            setActiveDistrict(null);
-          }}
-        >
-          Karnataka
-        </button>
-        <button
-          className={
-            activeState === "westbengal"
-              ? "text-white "
-              : "" + " cursor-pointer "
-          }
-          onClick={() => {
-            setActiveState("westbengal");
-            setActiveDistrict(null);
-          }}
-        >
-          West Bengal
-        </button>
+    <div className="h-screen py-12 px-4 md:px-10 flex justify-center items-center bg-gray-700">
+      <div className="absolute top-2 flex gap-2 w-full">
+      <MultiToggle
+        options={[
+          {
+            displayName: 'KL',
+            value: "kerala"
+          },
+          {
+            displayName: 'TN',
+            value: "tamilnadu"
+          },
+          {
+            displayName: 'KA',
+            value: "karnataka"
+          },
+          {
+            displayName: 'WB',
+            value: "westbengal"
+          },
+        ]}
+        className="px-12 gap-2"
+        selectedOption={activeState}
+        onSelectOption={(e) => {
+          setActiveState(e);
+          setActiveDistrict(null);
+        }}
+      />
       </div>
       <div className="h-full w-full flex flex-col gap-2 items-center md:w-1/2 p-2 rounded-lg border-2 border-gray-300 bg-gray-100 shadow-inner">
         <div className="flex w-full gap-2">
