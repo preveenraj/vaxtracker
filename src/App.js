@@ -18,6 +18,23 @@ const ageList = [
     value: 50,
   },
 ];
+
+const SelectStateButton = ({ value, label, activeState, setActiveState, setActiveDistrict }) => {
+  return (
+    <button
+      className={
+        activeState === value ? "text-blue " : "" + " cursor-pointer "
+      }
+      onClick={() => {
+        setActiveState(value);
+        setActiveDistrict(null);
+      }}
+    >
+      {label}
+    </button>
+  );
+};
+
 function App() {
   const [centerInfo, setCenterInfo] = useState(null);
   const [activeDistrict, setActiveDistrict] = useState(null);
@@ -46,7 +63,7 @@ function App() {
         <button
           className={
             activeState === "kerala"
-              ? "text-blue underline"
+              ? "text-white "
               : "" + " cursor-pointer "
           }
           onClick={() => {
@@ -56,10 +73,17 @@ function App() {
         >
           Kerala
         </button>
+        {/* <SelectStateButton
+        value={"kerala"}
+        label={"Kerala"}
+        activeState={activeState}
+        setActiveDate={setActiveState}
+        setActiveDistrict={setActiveDistrict}
+        /> */}
         <button
           className={
             activeState === "tamilnadu"
-              ? "text-blue underline"
+              ? "text-white "
               : "" + " cursor-pointer "
           }
           onClick={() => {
@@ -71,8 +95,21 @@ function App() {
         </button>
         <button
           className={
+            activeState === "karnataka"
+              ? "text-white "
+              : "" + " cursor-pointer "
+          }
+          onClick={() => {
+            setActiveState("karnataka");
+            setActiveDistrict(null);
+          }}
+        >
+          Karnataka
+        </button>
+        <button
+          className={
             activeState === "westbengal"
-              ? "text-blue underline"
+              ? "text-white "
               : "" + " cursor-pointer "
           }
           onClick={() => {

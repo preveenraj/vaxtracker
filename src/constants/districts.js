@@ -359,9 +359,137 @@ const tamilnadu = [
   }
 ];
 
+const karnataka =  [
+  {
+    "value": 270,
+    "label": "Bagalkot"
+  },
+  {
+    "value": 276,
+    "label": "Bangalore Rural"
+  },
+  {
+    "value": 265,
+    "label": "Bangalore Urban"
+  },
+  {
+    "value": 294,
+    "label": "BBMP"
+  },
+  {
+    "value": 264,
+    "label": "Belgaum"
+  },
+  {
+    "value": 274,
+    "label": "Bellary"
+  },
+  {
+    "value": 272,
+    "label": "Bidar"
+  },
+  {
+    "value": 271,
+    "label": "Chamarajanagar"
+  },
+  {
+    "value": 273,
+    "label": "Chikamagalur"
+  },
+  {
+    "value": 291,
+    "label": "Chikkaballapur"
+  },
+  {
+    "value": 268,
+    "label": "Chitradurga"
+  },
+  {
+    "value": 269,
+    "label": "Dakshina Kannada"
+  },
+  {
+    "value": 275,
+    "label": "Davanagere"
+  },
+  {
+    "value": 278,
+    "label": "Dharwad"
+  },
+  {
+    "value": 280,
+    "label": "Gadag"
+  },
+  {
+    "value": 267,
+    "label": "Gulbarga"
+  },
+  {
+    "value": 289,
+    "label": "Hassan"
+  },
+  {
+    "value": 279,
+    "label": "Haveri"
+  },
+  {
+    "value": 283,
+    "label": "Kodagu"
+  },
+  {
+    "value": 277,
+    "label": "Kolar"
+  },
+  {
+    "value": 282,
+    "label": "Koppal"
+  },
+  {
+    "value": 290,
+    "label": "Mandya"
+  },
+  {
+    "value": 266,
+    "label": "Mysore"
+  },
+  {
+    "value": 284,
+    "label": "Raichur"
+  },
+  {
+    "value": 292,
+    "label": "Ramanagara"
+  },
+  {
+    "value": 287,
+    "label": "Shimoga"
+  },
+  {
+    "value": 288,
+    "label": "Tumkur"
+  },
+  {
+    "value": 286,
+    "label": "Udupi"
+  },
+  {
+    "value": 281,
+    "label": "Uttar Kannada"
+  },
+  {
+    "value": 293,
+    "label": "Vijayapura"
+  },
+  {
+    "value": 285,
+    "label": "Yadgir"
+  }
+];
+
 const districts = {
   kerala,
   westbengal,
-  tamilnadu
+  tamilnadu,
+  karnataka
 }
 export default districts;
