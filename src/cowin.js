@@ -30,7 +30,7 @@ const pingCowin = async ({ districtId }) => {
                         appointmentsAvailableCount++;
                         if(appointmentsAvailableCount <= appointmentsListLimit) {
                             dataOfSlot = `${dataOfSlot}\nSlot for ${session.available_capacity} is available: ${center.name} on ${session.date}`;
-                        sentences.push(sentences);
+                        sentences.push(dataOfSlot);
                         }
                     }
                 }))
@@ -39,9 +39,8 @@ const pingCowin = async ({ districtId }) => {
 
             dataOfSlot = `${dataOfSlot}\n${appointmentsAvailableCount - appointmentsListLimit} more slots available...`
         }
-        console.log("🚀 ~ file: cowin.js ~ line 46 ~ pingCowin ~ sentences", sentences)
 
-        return { centers: updatedCenters, isSlotAvailable, dataOfSlot, sentences };
+        return { centers: updatedCenters, dataOfSlot, sentences };
     } catch (error) {
         console.log("Error: " + error.message);
     }
