@@ -18,23 +18,30 @@ const pingCowin = async ({ districtId }) => {
         const { centers }= data;
         let isSlotAvailable = false;
         let dataOfSlot = "";
+        let updatedCenters = [];
         let appointmentsAvailableCount = 0;
+        let sentences = [];
         if(centers.length) {
-            centers.forEach(center => {
+            updatedCenters = centers.filter(center => {
+                isSlotAvailable=false;
                 center.sessions.forEach((session => {
                     if(session.min_age_limit < +yourAge && session.available_capacity > 0) {
                         isSlotAvailable = true
                         appointmentsAvailableCount++;
                         if(appointmentsAvailableCount <= appointmentsListLimit) {
                             dataOfSlot = `${dataOfSlot}\nSlot for ${session.available_capacity} is available: ${center.name} on ${session.date}`;
+                        sentences.push(sentences);
                         }
                     }
                 }))
+                return isSlotAvailable;
             });
 
             dataOfSlot = `${dataOfSlot}\n${appointmentsAvailableCount - appointmentsListLimit} more slots available...`
         }
-        return { centers, isSlotAvailable, dataOfSlot };
+        console.log("🚀 ~ file: cowin.js ~ line 46 ~ pingCowin ~ sentences", sentences)
+
+        return { centers: updatedCenters, isSlotAvailable, dataOfSlot, sentences };
     } catch (error) {
         console.log("Error: " + error.message);
     }
