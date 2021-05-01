@@ -28,7 +28,7 @@ function App() {
             borderRadius: 5,
             colors: {
               ...theme.colors,
-              primary: "#194E92",
+              primary: "#0097e6",
             },
           })}
           options={districtConstants["kerala"]}
@@ -44,9 +44,9 @@ function App() {
           {centerInfo?.centers?.length}
         </span>
         <div className="p-8 flex flex-col gap-4 w-full overflow-scroll">
-          {centerInfo?.centers.map((center) => {
+          {centerInfo?.centers.map((center, index) => {
             return (
-              <div className="w-full flex justify-between p-2 rounded-lg shadow-inner bg-white">
+              <div key={index} className="w-full flex justify-between p-2 rounded-lg shadow-inner bg-white">
                 <span className="text-lg">{center.name}</span>
                 <span className="rounded-lg  p-1 h-8 font-bold text-green-400">
                   {center.fee_type}

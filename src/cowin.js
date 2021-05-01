@@ -1,5 +1,4 @@
-const axios = require('axios')
-const districtId = '269'; // Replace value here
+const axios = require('axios');
 const yourAge = '51'  // Replace value here
 const appointmentsListLimit = 2 // Increase/Decrease it based on the amount of information you want in the notification.
 
