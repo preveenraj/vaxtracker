@@ -175,8 +175,193 @@ const westbengal = [
     "label": "West Bardhaman"
   }
 ];
+
+const tamilnadu = [
+  {
+    "value": 779,
+    "label": "Aranthangi"
+  },
+  {
+    "value": 555,
+    "label": "Ariyalur"
+  },
+  {
+    "value": 578,
+    "label": "Attur"
+  },
+  {
+    "value": 565,
+    "label": "Chengalpet"
+  },
+  {
+    "value": 571,
+    "label": "Chennai"
+  },
+  {
+    "value": 778,
+    "label": "Cheyyar"
+  },
+  {
+    "value": 539,
+    "label": "Coimbatore"
+  },
+  {
+    "value": 547,
+    "label": "Cuddalore"
+  },
+  {
+    "value": 566,
+    "label": "Dharmapuri"
+  },
+  {
+    "value": 556,
+    "label": "Dindigul"
+  },
+  {
+    "value": 563,
+    "label": "Erode"
+  },
+  {
+    "value": 552,
+    "label": "Kallakurichi"
+  },
+  {
+    "value": 557,
+    "label": "Kanchipuram"
+  },
+  {
+    "value": 544,
+    "label": "Kanyakumari"
+  },
+  {
+    "value": 559,
+    "label": "Karur"
+  },
+  {
+    "value": 780,
+    "label": "Kovilpatti"
+  },
+  {
+    "value": 562,
+    "label": "Krishnagiri"
+  },
+  {
+    "value": 540,
+    "label": "Madurai"
+  },
+  {
+    "value": 576,
+    "label": "Nagapattinam"
+  },
+  {
+    "value": 558,
+    "label": "Namakkal"
+  },
+  {
+    "value": 577,
+    "label": "Nilgiris"
+  },
+  {
+    "value": 564,
+    "label": "Palani"
+  },
+  {
+    "value": 573,
+    "label": "Paramakudi"
+  },
+  {
+    "value": 570,
+    "label": "Perambalur"
+  },
+  {
+    "value": 575,
+    "label": "Poonamallee"
+  },
+  {
+    "value": 546,
+    "label": "Pudukkottai"
+  },
+  {
+    "value": 567,
+    "label": "Ramanathapuram"
+  },
+  {
+    "value": 781,
+    "label": "Ranipet"
+  },
+  {
+    "value": 545,
+    "label": "Salem"
+  },
+  {
+    "value": 561,
+    "label": "Sivaganga"
+  },
+  {
+    "value": 580,
+    "label": "Sivakasi"
+  },
+  {
+    "value": 551,
+    "label": "Tenkasi"
+  },
+  {
+    "value": 541,
+    "label": "Thanjavur"
+  },
+  {
+    "value": 569,
+    "label": "Theni"
+  },
+  {
+    "value": 554,
+    "label": "Thoothukudi (Tuticorin)"
+  },
+  {
+    "value": 560,
+    "label": "Tiruchirappalli"
+  },
+  {
+    "value": 548,
+    "label": "Tirunelveli"
+  },
+  {
+    "value": 550,
+    "label": "Tirupattur"
+  },
+  {
+    "value": 568,
+    "label": "Tiruppur"
+  },
+  {
+    "value": 572,
+    "label": "Tiruvallur"
+  },
+  {
+    "value": 553,
+    "label": "Tiruvannamalai"
+  },
+  {
+    "value": 574,
+    "label": "Tiruvarur"
+  },
+  {
+    "value": 543,
+    "label": "Vellore"
+  },
+  {
+    "value": 542,
+    "label": "Viluppuram"
+  },
+  {
+    "value": 549,
+    "label": "Virudhunagar"
+  }
+];
+
 const districts = {
   kerala,
-  westbengal
+  westbengal,
+  tamilnadu
 }
 export default districts;

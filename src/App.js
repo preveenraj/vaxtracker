@@ -58,6 +58,19 @@ function App() {
         </button>
         <button
           className={
+            activeState === "tamilnadu"
+              ? "text-blue underline"
+              : "" + " cursor-pointer "
+          }
+          onClick={() => {
+            setActiveState("tamilnadu");
+            setActiveDistrict(null);
+          }}
+        >
+          TamilNadu
+        </button>
+        <button
+          className={
             activeState === "westbengal"
               ? "text-blue underline"
               : "" + " cursor-pointer "
