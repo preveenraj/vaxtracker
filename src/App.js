@@ -71,6 +71,7 @@ const App = () => {
         onSelectOption={(e) => {
           setActiveState(e);
           setActiveDistrict(null);
+          setCenterInfo(null);
         }}
       />
       </div>
@@ -94,7 +95,10 @@ const App = () => {
               },
             })}
             options={districtConstants[activeState]}
-            onChange={(selected) => setActiveDistrict(selected || null)}
+            onChange={(selected) => {
+              setActiveDistrict(selected || null);
+              setCenterInfo(null);
+            }}
           />
           <Select
             isLoading={false}
@@ -112,14 +116,20 @@ const App = () => {
               },
             })}
             options={ageList}
-            onChange={(selected) => setActiveAgeCategory(selected || null)}
+            onChange={(selected) => {
+              setActiveAgeCategory(selected || null);
+              setCenterInfo(null);
+            }}
           />
         </div>
         <DatePicker
           dateFormat="MMMM d, yyyy"
           className="w-full shadow-inner border-2 border-blue-300 p-2 rounded-lg text-center"
           selected={activeDate}
-          onChange={(date) => setActiveDate(date)}
+          onChange={(date) => {
+            setActiveDate(date);
+            setCenterInfo(null);
+          }}
         />
 
         <button
