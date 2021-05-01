@@ -3317,7 +3317,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.6:
+classnames@^2.2.5, classnames@^2.2.6, classnames@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
@@ -9319,6 +9319,14 @@ react-is@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
+
+react-multi-toggle@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-multi-toggle/-/react-multi-toggle-1.1.0.tgz#0d97f5e281194c7ecaaf9f0a073ee7eecda1da4a"
+  integrity sha1-DZf14oEZTH7Kr58KBz7n7s2h2ko=
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.0"
 
 react-onclickoutside@^6.10.0:
   version "6.10.0"
