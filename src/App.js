@@ -86,7 +86,7 @@ function App() {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={searchCenters}
         >
-          Search centers for tomorrow
+          Search centers
         </button>
        {centerInfo &&  <span className="text-xl rounded-lg border-2 text-gray-300 p-2">
           Appoinments available: {centerInfo?.appointmentsAvailableCount || 0}
