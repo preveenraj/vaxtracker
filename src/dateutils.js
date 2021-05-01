@@ -1,9 +1,8 @@
 
-const getTomorrowsDate = () => {
-  const today = new Date();
-  const tomorrow = new Date();
-  tomorrow.setDate(today.getDate() + 1);
-  return tomorrow;
+const getNextDate = (date) => {
+  const nextDate = new Date(date.valueOf());
+  nextDate.setDate(date.getDate() + 1);
+  return nextDate;
 };
 
 const transformDate = (date) => {
@@ -14,6 +13,6 @@ const transformDate = (date) => {
 };
 
 export {
-  getTomorrowsDate,
+  getNextDate,
   transformDate
 }
