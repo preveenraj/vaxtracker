@@ -9,7 +9,6 @@ function App() {
   const [activeDistrict, setActiveDistrict] = useState(null);
 
   const searchCenters = async () => {
-    console.log(activeDistrict);
     const data = await pingCowin({ districtId: activeDistrict });
     setCenterInfo(data);
   };
