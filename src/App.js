@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Select from "react-select";
 import DatePicker from "react-datepicker";
-import classnames from "classnames";
 import "react-datepicker/dist/react-datepicker.css";
 
 import MultiToggle from "react-multi-toggle";
@@ -21,10 +20,29 @@ const ageList = [
   },
 ];
 
+const districtOptions = [
+  {
+    displayName: 'KL',
+    value: "kerala"
+  },
+  {
+    displayName: 'TN',
+    value: "tamilnadu"
+  },
+  {
+    displayName: 'KA',
+    value: "karnataka"
+  },
+  {
+    displayName: 'WB',
+    value: "westbengal"
+  },
+];
+
 const App = () => {
   const [centerInfo, setCenterInfo] = useState(null);
   const [activeDistrict, setActiveDistrict] = useState(null);
-  const [activeState, setActiveState] = useState("kerala");
+  const [activeState, setActiveState] = useState(districtOptions[0].value);
   const [activeAgeCategory, setActiveAgeCategory] = useState(ageList[1]);
   const [isLoading, setIsLoading] = useState(false);
   
@@ -47,24 +65,7 @@ const App = () => {
     <div className="h-screen py-12 px-4 md:px-10 flex justify-center items-center bg-gray-700">
       <div className="absolute top-2 flex gap-2 w-full">
       <MultiToggle
-        options={[
-          {
-            displayName: 'KL',
-            value: "kerala"
-          },
-          {
-            displayName: 'TN',
-            value: "tamilnadu"
-          },
-          {
-            displayName: 'KA',
-            value: "karnataka"
-          },
-          {
-            displayName: 'WB',
-            value: "westbengal"
-          },
-        ]}
+        options={districtOptions}
         className="px-12 gap-2"
         selectedOption={activeState}
         onSelectOption={(e) => {
