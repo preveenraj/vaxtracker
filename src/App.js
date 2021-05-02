@@ -133,6 +133,7 @@ const App = () => {
             isLoading={false}
             placeholder={"Select Age Category"}
             error={false}
+            isSearchable={false}
             defaultValue={activeAgeCategory}
             className="w-4/12 text-bold"
             name="ageList"
