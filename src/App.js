@@ -22,20 +22,20 @@ const ageList = [
 
 const districtOptions = [
   {
-    displayName: 'KL',
-    value: "kerala"
+    displayName: "KL",
+    value: "kerala",
   },
   {
-    displayName: 'TN',
-    value: "tamilnadu"
+    displayName: "TN",
+    value: "tamilnadu",
   },
   {
-    displayName: 'KA',
-    value: "karnataka"
+    displayName: "KA",
+    value: "karnataka",
   },
   {
-    displayName: 'WB',
-    value: "westbengal"
+    displayName: "WB",
+    value: "westbengal",
   },
 ];
 
@@ -45,11 +45,17 @@ const App = () => {
   const [activeState, setActiveState] = useState(districtOptions[0].value);
   const [activeAgeCategory, setActiveAgeCategory] = useState(ageList[1]);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const [activeDate, setActiveDate] = useState(getNextDate(new Date()));
-  const [appoinmentsAvailableTillNextWeek, setAppoinmentsAvailableTillNextWeek] = useState(0);
-  const [appoinmentDatesTillNextWeek, setAppoinmentDatesTillNextWeek] = useState([]);
-  
+  const [
+    appoinmentsAvailableTillNextWeek,
+    setAppoinmentsAvailableTillNextWeek,
+  ] = useState(0);
+  const [
+    appoinmentDatesTillNextWeek,
+    setAppoinmentDatesTillNextWeek,
+  ] = useState([]);
+
   const searchCenters = async () => {
     if (activeDistrict) {
       setIsLoading(true);
@@ -62,8 +68,11 @@ const App = () => {
       let nextDate = getNextDate(activeDate);
       let totalAppoinmentsAvailable = data.appointmentsAvailableCount;
       let appoinmentDates = [data.nearestAppoinmentDate];
-      while(dateCount++ <= 7) {
-        const { appointmentsAvailableCount, nearestAppoinmentDate } = await pingCowin({
+      while (dateCount++ <= 7) {
+        const {
+          appointmentsAvailableCount,
+          nearestAppoinmentDate,
+        } = await pingCowin({
           districtId: activeDistrict?.value,
           ageValue: activeAgeCategory?.value,
           date: nextDate,
@@ -84,16 +93,16 @@ const App = () => {
   return (
     <div className="h-screen py-12 px-4 md:px-10 flex justify-center items-center bg-gray-700">
       <div className="absolute top-2 flex gap-2 w-full">
-      <MultiToggle
-        options={districtOptions}
-        className="px-12 gap-2"
-        selectedOption={activeState}
-        onSelectOption={(e) => {
-          setActiveState(e);
-          setActiveDistrict(null);
-          setCenterInfo(null);
-        }}
-      />
+        <MultiToggle
+          options={districtOptions}
+          className="px-12 gap-2"
+          selectedOption={activeState}
+          onSelectOption={(e) => {
+            setActiveState(e);
+            setActiveDistrict(null);
+            setCenterInfo(null);
+          }}
+        />
       </div>
       <div className="h-full w-full flex flex-col gap-2 items-center md:w-1/2 p-2 rounded-lg border-2 border-gray-300 bg-gray-100 shadow-inner">
         <div className="flex w-full gap-2">
@@ -160,18 +169,33 @@ const App = () => {
         </button>
         {centerInfo && (
           <>
-          <span className="text-xl rounded-lg border-2 text-gray-400 p-2">
-          {centerInfo?.appointmentsAvailableCount || "No"} appoinment{centerInfo?.appointmentsAvailableCount > 1 ? "s" : ""} for the date
-          </span>
-          {appoinmentsAvailableTillNextWeek ?
-              <span className="text-md rounded-lg border-2 text-gray-300 p-2 flex justify-center text-center">
-              And no worries, there are {appoinmentsAvailableTillNextWeek} appoinments available till {appoinmentDatesTillNextWeek[0]}
+            <span className="text-xl rounded-lg border-2 text-gray-400 p-2">
+              {centerInfo?.appointmentsAvailableCount || "No"} appoinment
+              {centerInfo?.appointmentsAvailableCount > 1 ? "s" : ""} for the
+              date
             </span>
-            : 
-            <span className="text-5xl font-bold rounded-lg h-full flex justify-center border-2 text-gray-300 p-4">
-           Sorry, there are no appoinments for the next 7 days, please try later.
-            </span>
-        }
+            {appoinmentsAvailableTillNextWeek ? (
+              <>
+                <span className="text-md rounded-lg border-2 text-gray-300 p-2 flex justify-center text-center">
+                  And no worries, there are {appoinmentsAvailableTillNextWeek}{" "}
+                  appoinments available till {appoinmentDatesTillNextWeek[0]}
+                </span>
+                <span
+                  className="text-gray-500 rounded-lg p-1 hover:text-green-500 font-bold cursor-pointer"
+                  onClick={() =>
+                    (window.location.href =
+                      "https://selfregistration.cowin.gov.in/")
+                  }
+                >
+                  Register Now
+                </span>
+              </>
+            ) : (
+              <span className="text-5xl font-bold rounded-lg h-full flex justify-center border-2 text-gray-300 p-4">
+                Sorry, there are no appoinments for the next 7 days, please try
+                later.
+              </span>
+            )}
           </>
         )}
         {!!centerInfo?.centers.length && (
@@ -183,9 +207,15 @@ const App = () => {
                   className="w-full flex justify-between p-2 rounded-lg shadow-inner bg-white"
                 >
                   <span className="text-lg">{center.name}</span>
-                  <span className="rounded-lg  p-1 h-8 font-bold text-green-400">
-                    {center.fee_type}
-                  </span>
+                  {center.fee_type === "Free" ? (
+                    <span className="rounded-lg  p-1 h-8 font-bold text-green-400">
+                      {center.fee_type}
+                    </span>
+                  ) : (
+                    <span className="rounded-lg  p-1 h-8 font-bold text-yellow-500">
+                      {center.fee_type}
+                    </span>
+                  )}
                 </div>
               );
             })}
@@ -194,6 +224,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;
